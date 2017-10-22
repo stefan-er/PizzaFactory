@@ -2,16 +2,11 @@
 
 namespace PizzaFactory.Core.Orders
 {
-    public class Order : ValueObject<Order>
+    public class Order : EntityBase<int>
     {
-        protected override bool EqualsCore(Order other)
+        public Order(int id)
+            : base(id)
         {
-            throw new System.NotImplementedException();
-        }
-
-        protected override int GetHashCodeCore()
-        {
-            throw new System.NotImplementedException();
         }
     }
 }

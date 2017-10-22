@@ -1,6 +1,6 @@
-﻿namespace PizzaFactory.Core.Meet
+﻿namespace PizzaFactory.Core.Meats
 {
-    public class Prosciutto : Meet
+    public class Prosciutto : Meat
     {
         public Prosciutto()
         {

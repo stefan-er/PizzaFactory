@@ -1,16 +1,12 @@
 ﻿using PizzaFactory.Core.Doughs;
 using PizzaFactory.Core.Sauces;
-using System.Collections.Generic;
 
 namespace PizzaFactory.Core.Pizzas
 {
     public abstract class Pizza
     {
-        private IDictionary<string, ICollection<Topping>> toppings;
-
         public Pizza()
         {
-            toppings = new Dictionary<string, ICollection<Topping>>();
         }
 
         public Pizza(Dough dough, Sauce sauce)
@@ -20,20 +16,15 @@ namespace PizzaFactory.Core.Pizzas
             Sauce = sauce;
         }
 
-        public Dough Dough { get; set; }
-        public Sauce Sauce { get; set; }
+        public PizzaType Type { get; protected set; }
+        public Dough Dough { get; protected set; }
+        public Sauce Sauce { get; protected set; }
         
-        public virtual ICollection<Topping> this[string toppingType]
+        public virtual string GetIngredients()
         {
-            get
-            {
-                if (!this.toppings.ContainsKey(toppingType))
-                {
-                    this.toppings[toppingType] = new List<Topping>();
-                }
+            string ingredients = $"Pizza type: {Type.ToString()}\\r\\nDough: {Dough.Name}\\r\\nSauce: {Sauce.Name}";
 
-                return this.toppings[toppingType];
-            }
+            return ingredients;
         }
     }
 }

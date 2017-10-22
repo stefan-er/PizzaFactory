@@ -1,4 +1,4 @@
-﻿namespace PizzaFactory.Core.Cheese
+﻿namespace PizzaFactory.Core.Cheeses
 {
     public class Mozzarella : Cheese
     {

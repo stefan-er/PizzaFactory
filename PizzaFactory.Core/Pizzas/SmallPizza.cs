@@ -5,8 +5,10 @@ namespace PizzaFactory.Core.Pizzas
 {
     public class SmallPizza : Pizza
     {
-        public SmallPizza(Dough dough, Sauce sauce) : base(dough, sauce)
+        public SmallPizza(Dough dough, Sauce sauce) 
+            : base(dough, sauce)
         {
+            Type = PizzaType.Small;
         }
     }
 }

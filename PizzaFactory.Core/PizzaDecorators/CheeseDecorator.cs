@@ -1,16 +1,13 @@
-﻿using PizzaFactory.Core.Pizzas;
-using System.Collections.Generic;
+﻿using PizzaFactory.Core.Cheeses;
+using PizzaFactory.Core.Pizzas;
 
 namespace PizzaFactory.Core.PizzaDecorators
 {
-    public class CheeseDecorator : PizzaDecorator
+    public class CheeseDecorator : PizzaDecorator<Cheese>
     {
-        private IEnumerable<Cheese.Cheese> cheeseCollection;
-
-        public CheeseDecorator(Pizza pizza, params Cheese.Cheese[] cheese)
-            : base(pizza)
+        public CheeseDecorator(Pizza pizza, params Cheese[] cheeses)
+            : base(pizza, cheeses)
         {
-            this.cheeseCollection = cheese;
         }
     }
 }

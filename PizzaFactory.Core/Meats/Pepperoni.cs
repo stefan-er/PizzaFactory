@@ -1,6 +1,6 @@
-﻿namespace PizzaFactory.Core.Meet
+﻿namespace PizzaFactory.Core.Meats
 {
-    public class Pepperoni : Meet
+    public class Pepperoni : Meat
     {
         public Pepperoni()
         {

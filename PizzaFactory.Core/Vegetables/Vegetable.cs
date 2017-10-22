@@ -1,7 +1,10 @@
 ﻿namespace PizzaFactory.Core.Vegetables
 {
-    public abstract class Vegetable
+    public abstract class Vegetable : Topping
     {
-        public string Name { get; protected set; }
+        public Vegetable()
+        {
+            Type = ToppingType.Vegetable;
+        }
     }
 }

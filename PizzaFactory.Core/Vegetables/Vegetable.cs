@@ -1,6 +1,6 @@
 ﻿namespace PizzaFactory.Core
 {
-    public abstract class SauceBase
+    public abstract class Vegetable
     {
         public string Name { get; protected set; }
     }

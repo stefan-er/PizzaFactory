@@ -1,6 +1,6 @@
 ﻿namespace PizzaFactory.Core
 {
-    public class TomatoSauce : SauceBase
+    public class TomatoSauce : Sauce
     {
         public TomatoSauce()
         {

@@ -2,14 +2,14 @@
 
 namespace PizzaFactory.Core
 {
-    public abstract class BasePizza : EntityBase<int>
+    public abstract class Pizza : EntityBase<int>
     {
-        public BasePizza(int id, SauceBase sauce) 
+        public Pizza(int id, Sauce sauce) 
             : base(id)
         {
             this.Sauce = sauce;
         }
 
-        public SauceBase Sauce { get; set; }
+        public Sauce Sauce { get; set; }
     }
 }

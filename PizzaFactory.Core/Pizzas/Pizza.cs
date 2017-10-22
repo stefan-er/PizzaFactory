@@ -1,6 +1,7 @@
-﻿using PizzaFactory.Infrastructure;
+﻿using PizzaFactory.Core.Sauces;
+using PizzaFactory.Infrastructure;
 
-namespace PizzaFactory.Core
+namespace PizzaFactory.Core.Pizzas
 {
     public abstract class Pizza : EntityBase<int>
     {

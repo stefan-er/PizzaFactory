@@ -1,4 +1,4 @@
-﻿namespace PizzaFactory.Core
+﻿namespace PizzaFactory.Core.Vegetables
 {
     public class Corn : Vegetable
     {

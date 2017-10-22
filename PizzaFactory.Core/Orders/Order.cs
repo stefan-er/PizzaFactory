@@ -1,6 +1,6 @@
 ﻿using PizzaFactory.Infrastructure;
 
-namespace PizzaFactory.Core
+namespace PizzaFactory.Core.Orders
 {
     public class Order : ValueObject<Order>
     {

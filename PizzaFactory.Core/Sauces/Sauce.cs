@@ -1,4 +1,4 @@
-﻿namespace PizzaFactory.Core
+﻿namespace PizzaFactory.Core.Sauces
 {
     public abstract class Sauce
     {

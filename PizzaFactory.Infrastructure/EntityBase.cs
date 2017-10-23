@@ -2,7 +2,11 @@
 
 namespace PizzaFactory.Infrastructure
 {
-    public abstract class EntityBase<IdType> : IEquatable<EntityBase<IdType>>
+    public interface IEntity<IdType> : IEquatable<IEntity<IdType>>
+    {
+    }
+
+    public abstract class EntityBase<IdType>
     {
         private readonly IdType id;
 

@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
+using PizzaFactory.Infrastructure;
+using System;
+using System.Reflection;
 
 namespace PizzaFactory.Web
 {
@@ -23,6 +20,12 @@ namespace PizzaFactory.Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            Assembly correAssembly = typeof(Core.Common.BaseCommand).Assembly;
+            
+            services.AddScoped<IRepository, InMemoryRepository>();
+            services.AddSingleton<ICommandSender>(s => new InMemoryBus(h => Activator.CreateInstance(h), correAssembly));
+            services.AddSingleton<IEventPublisher>(s => new InMemoryBus(h => Activator.CreateInstance(h), correAssembly));
+
             services.AddMvc();
         }
 

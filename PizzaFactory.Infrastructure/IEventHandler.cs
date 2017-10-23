@@ -3,6 +3,6 @@
     public interface IEventHandler<TEvent>
         where TEvent : IEvent
     {
-        void Handle(IEvent @event);
+        void Handle(TEvent @event);
     }
 }

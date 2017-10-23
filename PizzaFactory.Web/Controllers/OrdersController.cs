@@ -20,7 +20,9 @@ namespace PizzaFactory.Web.Controllers
         [HttpPost]
         public void Post([FromBody]PlaceOrderModel model)
         {
-            PlaceOrder placeOrder = new PlaceOrder(Guid.Parse("4bdf2d6b-029f-48e5-a7a9-cdb85a8ef636"));
+            var id = Guid.NewGuid();
+
+            PlaceOrder placeOrder = new PlaceOrder(id, model.Size, model.DoughType, model.SauceType, model.Cheeses, model.Meats, model.Vegetables, User.Identity.Name);
             CommandSender.Send(placeOrder);
         }
     }

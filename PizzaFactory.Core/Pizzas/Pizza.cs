@@ -16,7 +16,7 @@ namespace PizzaFactory.Core.Pizzas
             Sauce = sauce;
         }
 
-        public PizzaType Type { get; protected set; }
+        public PizzaSize Type { get; protected set; }
         public Dough Dough { get; protected set; }
         public Sauce Sauce { get; protected set; }
         

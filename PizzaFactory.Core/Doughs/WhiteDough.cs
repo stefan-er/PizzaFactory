@@ -1,8 +1,8 @@
 ﻿namespace PizzaFactory.Core.Doughs
 {
-    public class White : Dough
+    public class WhiteDough : Dough
     {
-        public White()
+        public WhiteDough()
         {
             Name = "White dough";
         }

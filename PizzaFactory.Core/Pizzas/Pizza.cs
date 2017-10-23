@@ -16,13 +16,13 @@ namespace PizzaFactory.Core.Pizzas
             Sauce = sauce;
         }
 
-        public PizzaSize Type { get; protected set; }
+        public PizzaSize Size { get; protected set; }
         public Dough Dough { get; protected set; }
         public Sauce Sauce { get; protected set; }
         
         public virtual string GetIngredients()
         {
-            string ingredients = $"Pizza type: {Type.ToString()}\\r\\nDough: {Dough.Name}\\r\\nSauce: {Sauce.Name}";
+            string ingredients = $"Pizza size: {Size.ToString()}\\r\\nDough: {Dough.Name}\\r\\nSauce: {Sauce.Name}";
 
             return ingredients;
         }

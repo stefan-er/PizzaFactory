@@ -2,6 +2,8 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using PizzaFactory.Core.Common;
+using PizzaFactory.Core.Orders;
 using PizzaFactory.Infrastructure;
 using System;
 using System.Reflection;
@@ -23,7 +25,14 @@ namespace PizzaFactory.Web
             Assembly correAssembly = typeof(Core.Common.BaseCommand).Assembly;
             
             services.AddScoped<IRepository, InMemoryRepository>();
-            services.AddSingleton<ICommandSender>(s => new InMemoryBus(h => Activator.CreateInstance(h), correAssembly));
+            services.AddScoped<ISimpleFactory, SimpleFactory>();
+
+            //Register all ICommandHandlers
+            services.AddScoped(s => new OrderApplicationService(s.GetService<ISimpleFactory>()));
+
+            IServiceProvider serviceProvider = services.BuildServiceProvider();
+
+            services.AddSingleton<ICommandSender>(s => new InMemoryBus(h => serviceProvider.GetService(h), correAssembly));
             services.AddSingleton<IEventPublisher>(s => new InMemoryBus(h => Activator.CreateInstance(h), correAssembly));
 
             services.AddMvc();

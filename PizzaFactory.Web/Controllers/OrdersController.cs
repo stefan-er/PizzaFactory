@@ -22,7 +22,8 @@ namespace PizzaFactory.Web.Controllers
         {
             var id = Guid.NewGuid();
 
-            PlaceOrder placeOrder = new PlaceOrder(id, model.Size, model.DoughType, model.SauceType, model.Cheeses, model.Meats, model.Vegetables, User.Identity.Name);
+            PlaceOrder placeOrder = new PlaceOrder(id, model.Size, model.DoughType, model.SauceType, 
+                model.Cheeses, model.Meats, model.Vegetables, DateTime.Now, User.Identity.Name);
             CommandSender.Send(placeOrder);
         }
     }

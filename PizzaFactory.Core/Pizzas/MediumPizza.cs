@@ -8,7 +8,7 @@ namespace PizzaFactory.Core.Pizzas
         public MediumPizza(Dough dough, Sauce sauce) 
             : base(dough, sauce)
         {
-            Type = PizzaSize.Medium;
+            Size = PizzaSize.Medium;
         }
     }
 }

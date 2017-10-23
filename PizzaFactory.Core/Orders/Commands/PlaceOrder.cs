@@ -14,8 +14,10 @@ namespace PizzaFactory.Core.Orders.Commands
     {
         public PlaceOrder(Guid id, PizzaSize size, DoughType doughType, SauceType sauceType, 
             IEnumerable<CheeseType> cheeses, IEnumerable<MeatType> meats, IEnumerable<VegetableType> vegetables, 
-            string calledBy): base(calledBy)
+            DateTime date, string calledBy): base(calledBy)
         {
+            //TODO: Make more validations of the data if necessary
+
             if (id == Guid.Empty || ReferenceEquals(id, null)) throw new ArgumentException("Invalid Id");
 
             Id = id;
@@ -25,6 +27,7 @@ namespace PizzaFactory.Core.Orders.Commands
             Cheeses = cheeses;
             Meats = meats;
             Vegetables = vegetables;
+            Date = date;
         }
 
         public Guid Id { get; private set; }
@@ -34,5 +37,6 @@ namespace PizzaFactory.Core.Orders.Commands
         public IEnumerable<CheeseType> Cheeses { get; private set; }
         public IEnumerable<MeatType> Meats { get; private set; }
         public IEnumerable<VegetableType> Vegetables { get; private set; }
+        public DateTime Date { get; private set; }
     }
 }

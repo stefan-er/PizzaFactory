@@ -1,8 +1,8 @@
 ﻿namespace PizzaFactory.Core.Doughs
 {
-    public class Wholemeal : Dough
+    public class WholemealDough : Dough
     {
-        public Wholemeal()
+        public WholemealDough()
         {
             Name = "Wholemeal dough";
         }

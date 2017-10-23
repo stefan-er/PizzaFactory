@@ -11,7 +11,7 @@ namespace PizzaFactory.Core.PizzaDecorators
         {
             Pizza = pizza;
 
-            Type = pizza.Type;
+            Size = pizza.Size;
             Dough = pizza.Dough;
             Sauce = pizza.Sauce;
             

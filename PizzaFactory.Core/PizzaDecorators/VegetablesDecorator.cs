@@ -8,6 +8,7 @@ namespace PizzaFactory.Core.PizzaDecorators
         public VegetablesDecorator(Pizza pizza, params Vegetable[] vegetables) 
             : base(pizza, vegetables)
         {
+            ToppingType = ToppingType.Vegetable;
         }
     }
 }

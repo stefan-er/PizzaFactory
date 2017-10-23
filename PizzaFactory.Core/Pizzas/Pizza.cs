@@ -1,5 +1,6 @@
 ﻿using PizzaFactory.Core.Doughs;
 using PizzaFactory.Core.Sauces;
+using System;
 
 namespace PizzaFactory.Core.Pizzas
 {
@@ -22,7 +23,7 @@ namespace PizzaFactory.Core.Pizzas
         
         public virtual string GetIngredients()
         {
-            string ingredients = $"Pizza size: {Size.ToString()}\\r\\nDough: {Dough.Name}\\r\\nSauce: {Sauce.Name}";
+            string ingredients = $"Pizza size: {Size.ToString()}{Environment.NewLine}Dough: {Dough.Name}{Environment.NewLine}Sauce: {Sauce.Name}";
 
             return ingredients;
         }

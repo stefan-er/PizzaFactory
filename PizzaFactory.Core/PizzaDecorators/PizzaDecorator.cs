@@ -1,4 +1,5 @@
 ﻿using PizzaFactory.Core.Pizzas;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -22,18 +23,18 @@ namespace PizzaFactory.Core.PizzaDecorators
 
         protected Pizza Pizza { get; private set; }
         protected ICollection<Topping> Toppings { get; private set; }
-        protected ToppingType ToppingType { get; private set; }
+        protected ToppingType ToppingType { get; set; }
 
         public override string GetIngredients()
         {
             var ingredientsBuilder = new StringBuilder();
 
             ingredientsBuilder.Append(Pizza.GetIngredients());
-            ingredientsBuilder.Append($"\\r\\nTODO: Add Topping type: ");
+            ingredientsBuilder.Append($"{Environment.NewLine}{ToppingType.ToString()}: ");
 
             foreach (Topping topping in Toppings)
             {
-                ingredientsBuilder.Append($"\\r\\n    {topping.Name}");
+                ingredientsBuilder.Append($"{Environment.NewLine}    {topping.Name}");
             }
 
             return ingredientsBuilder.ToString();

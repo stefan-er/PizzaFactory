@@ -1,14 +1,15 @@
-﻿using System.Linq;
+﻿using System;
+using System.Collections.Generic;
 
 namespace PizzaFactory.Infrastructure
 {
     public interface IRepository
     {
-        IQueryable<T> All<T>() where T : class;
+        IEnumerable<T> All<T>() where T : class;
 
         T Load<T>(object id) where T : class;
 
-        void Save<T>(T aggregate, string createdBy) where T : class;
+        void Save<T>(T aggregate, string createdBy) where T : EntityBase<Guid>;
 
         void Delete<T>(T aggregate, string deletedBy) where T : class;
 

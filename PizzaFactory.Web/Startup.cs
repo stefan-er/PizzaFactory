@@ -28,7 +28,7 @@ namespace PizzaFactory.Web
             services.AddScoped<ISimpleFactory, SimpleFactory>();
 
             //Register all ICommandHandlers
-            services.AddScoped(s => new OrderApplicationService(s.GetService<ISimpleFactory>()));
+            services.AddScoped(s => new OrderApplicationService(s.GetService<IRepository>(), s.GetService<ISimpleFactory>()));
 
             IServiceProvider serviceProvider = services.BuildServiceProvider();
 

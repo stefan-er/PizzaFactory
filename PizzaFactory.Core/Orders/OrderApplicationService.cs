@@ -16,7 +16,8 @@ namespace PizzaFactory.Core.Orders
     public class OrderApplicationService : ApplicationService,
         ICommandHandler<PlaceOrder>
     {
-        public OrderApplicationService(ISimpleFactory factory)
+        public OrderApplicationService(IRepository repository, ISimpleFactory factory)
+            : base(repository)
         {
             Factory = factory;
         }
@@ -68,9 +69,7 @@ namespace PizzaFactory.Core.Orders
                 decoratedPizza = new VegetablesDecorator(decoratedPizza, vegetables.ToArray());
             }
 
-            string ingredients = decoratedPizza.GetIngredients();
-
-            var order = new Order(command.Id, pizza, command.Date, command.CalledBy);
+            var order = new Order(command.Id, decoratedPizza.GetIngredients(), command.Date, command.CalledBy);
 
             Repository.Save(order, command.CalledBy);
         }

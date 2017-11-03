@@ -14,7 +14,8 @@ namespace PizzaFactory.Core.Common
         {
             sets = new Dictionary<Type, object>();
             
-            sets[typeof(Order)] = new EntitiesSet<Order>();
+            Orders = new EntitiesSet<Order>();
+            sets[typeof(Order)] = Orders;
         }
 
         public static InMemoryData Instance
@@ -24,6 +25,8 @@ namespace PizzaFactory.Core.Common
                 return instance;
             }
         }
+
+        public IEntitiesSet<Order> Orders { get; private set; }
         
         public IEntitiesSet<TEntity> Set<TEntity>() where TEntity : EntityBase<Guid>
         {

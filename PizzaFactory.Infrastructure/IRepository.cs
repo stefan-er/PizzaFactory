@@ -5,14 +5,14 @@ namespace PizzaFactory.Infrastructure
 {
     public interface IRepository
     {
-        IEnumerable<T> All<T>() where T : class;
+        TEntity Load<TEntity>(Guid id) where TEntity : EntityBase<Guid>;
 
-        T Load<T>(object id) where T : class;
+        void Save<TEntity>(TEntity aggregate, string createdBy) where TEntity : EntityBase<Guid>;
 
-        void Save<T>(T aggregate, string createdBy) where T : EntityBase<Guid>;
+        bool Any<TEntity>(Guid id) where TEntity : EntityBase<Guid>;
 
-        void Delete<T>(T aggregate, string deletedBy) where T : class;
+        IEnumerable<TEntity> All<TEntity>() where TEntity : EntityBase<Guid>;
 
-        bool Any<T>(object id) where T : class, IEntity<object>;
+        void Delete<TEntity>(TEntity aggregate, string deletedBy) where TEntity : EntityBase<Guid>;
     }
 }

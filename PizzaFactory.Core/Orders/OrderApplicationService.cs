@@ -6,9 +6,6 @@ using PizzaFactory.Core.PizzaDecorators;
 using PizzaFactory.Core.Pizzas;
 using PizzaFactory.Core.Vegetables;
 using PizzaFactory.Infrastructure;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace PizzaFactory.Core.Orders
 {
@@ -29,38 +26,25 @@ namespace PizzaFactory.Core.Orders
 
             if (command.Cheeses != null)
             {
-                Cheese[] cheeses = GetToppings<Cheese>(command.Cheeses);
+                Cheese[] cheeses = Topping.GetToppings<Cheese>(command.Cheeses, Factory);
                 pizza = new CheeseDecorator(pizza, cheeses);
             }
 
             if (command.Meats != null)
             {
-                Meat[] meats = GetToppings<Meat>(command.Meats);
+                Meat[] meats = Topping.GetToppings<Meat>(command.Meats, Factory);
                 pizza = new MeatDecorator(pizza, meats);
             }
 
             if (command.Vegetables != null)
             {
-                Vegetable[] vegetables = GetToppings<Vegetable>(command.Vegetables);
+                Vegetable[] vegetables = Topping.GetToppings<Vegetable>(command.Vegetables, Factory);
                 pizza = new VegetablesDecorator(pizza, vegetables);
             }
 
             var order = new Order(command.Id, pizza.GetIngredients(), command.Date, command.CalledBy);
 
             Repository.Save(order, command.CalledBy);
-        }
-
-        //TODO: Move this method to Toppings class
-        private T[] GetToppings<T>(IEnumerable types) where T : Topping
-        {
-            var toppings = new HashSet<T>();
-            foreach (var type in types)
-            {
-                T topping = Factory.CreateTopping<T>(type);
-                toppings.Add(topping);
-            }
-
-            return toppings.ToArray();
         }
     }
 }

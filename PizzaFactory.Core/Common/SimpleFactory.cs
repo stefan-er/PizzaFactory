@@ -1,18 +1,21 @@
-﻿using PizzaFactory.Core.Doughs;
-using PizzaFactory.Core.Sauces;
-using System;
-using PizzaFactory.Core.Cheeses;
+﻿using PizzaFactory.Core.Cheeses;
+using PizzaFactory.Core.Doughs;
 using PizzaFactory.Core.Meats;
 using PizzaFactory.Core.Pizzas;
+using PizzaFactory.Core.Sauces;
 using PizzaFactory.Core.Vegetables;
+using System;
 
 namespace PizzaFactory.Core.Common
 {
     public class SimpleFactory : ISimpleFactory
     {
-        public Pizza CreatePizza(PizzaSize size, Dough dough, Sauce sauce)
+        public Pizza CreatePizza(PizzaSize size, DoughType doughType, SauceType sauceType)
         {
             Pizza instance = null;
+
+            Dough dough = CreateDough(doughType);
+            Sauce sauce = CreateSauce(sauceType);
 
             switch (size)
             {
@@ -31,8 +34,27 @@ namespace PizzaFactory.Core.Common
 
             return instance;
         }
+        public T CreateTopping<T>(object type) where T : Topping
+        {
+            Topping topping = null;
 
-        public Dough CreateDough(DoughType type)
+            if (typeof(T) == typeof(Cheese))
+            {
+                topping = CreateCheese(Enum.Parse<CheeseType>(type.ToString()));
+            }
+            else if (typeof(T) == typeof(Meat))
+            {
+                topping = CreateMeat(Enum.Parse<MeatType>(type.ToString()));
+            }
+            else if (typeof(T) == typeof(Vegetable))
+            {
+                topping = CreateVegetable(Enum.Parse<VegetableType>(type.ToString()));
+            }
+
+            return (T)topping;
+        }
+
+        private Dough CreateDough(DoughType type)
         {
             Dough instance = null;
 
@@ -50,8 +72,7 @@ namespace PizzaFactory.Core.Common
 
             return instance;
         }
-
-        public Sauce CreateSauce(SauceType type)
+        private Sauce CreateSauce(SauceType type)
         {
             Sauce instance = null;
 
@@ -69,8 +90,7 @@ namespace PizzaFactory.Core.Common
 
             return instance;
         }
-
-        public Cheese CreateCheese(CheeseType type)
+        private Cheese CreateCheese(CheeseType type)
         {
             Cheese instance = null;
 
@@ -88,8 +108,7 @@ namespace PizzaFactory.Core.Common
 
             return instance;
         }
-
-        public Meat CreateMeat(MeatType type)
+        private Meat CreateMeat(MeatType type)
         {
             Meat instance = null;
 
@@ -107,8 +126,7 @@ namespace PizzaFactory.Core.Common
 
             return instance;
         }
-
-        public Vegetable CreateVegetable(VegetableType type)
+        private Vegetable CreateVegetable(VegetableType type)
         {
             Vegetable instance = null;
 
